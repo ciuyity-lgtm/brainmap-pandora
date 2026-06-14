@@ -1,5 +1,9 @@
 .DS_Store
 brainmap_data.json
-*.md
-!README.md
 *.command
+
+# 只跟踪 P01（脑图星云项目），其他项目文档不入库
+P02-知识体系/
+P03-量化策略/
+P04-财务Agent/
+_项目制管理规范.md
