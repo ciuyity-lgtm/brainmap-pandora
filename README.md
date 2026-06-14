@@ -1,17 +1,27 @@
 # Brainmap Pandora 🌌
 
-> 把 A 股产业链变成 3D 银河系 — 565 只股票、1807 条产业链关系的交互式星空可视化
+> **把 A 股产业链变成 3D 银河系** — 565 只股票、1807 条产业链关系的交互式星空可视化
+
+[![GitHub stars](https://img.shields.io/github/stars/ciuyity-lgtm/brainmap-pandora?style=social)](https://github.com/ciuyity-lgtm/brainmap-pandora)
+[![官网](https://img.shields.io/badge/🌐-在线体验-ff6b35)](https://yi.ciuyishang.com)
+
+---
+
+**在线体验** 👉 [https://yi.ciuyishang.com](https://yi.ciuyishang.com)
 
 **一个 HTML 文件，双击即开，无需服务器。**
+
+> 🏆 **全网首创** — 首个把 A 股产业链关系做成 3D 星空星系的开源项目
 
 ## 演示效果
 
 打开网页，映入眼帘的是一片深邃星空——
 每只股票是一颗**带光晕粒子环的星球**，产业链关系是**弯曲的激光线**相连。
 
-| 悬浮 | 显示股票名 + 信号 |
+| 操作 | 效果 |
 |:----|:----|
-| 点击股票 🚀 | 镜头飞入该股——变成**太阳**，上下游关联公司变成**行星**绕它转 |
+| 鼠标悬浮 🖱️ | 显示股票名称 + 财务信号 |
+| 点击股票 🚀 | 镜头飞入——该股变成**太阳**，上下游公司变成**行星**绕它转 |
 | 再点空白 | 回到全景星图 |
 | F 键 | 全屏切换 |
 | R 键 | 重置视角 |
@@ -48,14 +58,22 @@
 ## 本地运行
 
 ```bash
-# 下载或克隆
 git clone https://github.com/ciuyity-lgtm/brainmap-pandora.git
-
-# 双击打开
+cd brainmap-pandora
 open brainmap_pandora_v5.html
-
-# 或者拖进浏览器
 ```
+
+或者直接访问官网：**[https://yi.ciuyishang.com](https://yi.ciuyishang.com)**
+
+## 为什么做这个？
+
+A 股的产业链关系一直是**最值钱但最难看清**的信息。供应商是谁？客户是谁？竞品有哪些？传统上要靠翻研报、查数据库。
+
+我把这些关系变成了**你可以走进去的宇宙**——一眼看清产业链格局。
+
+## 作者
+
+[@ciuyity-lgtm](https://github.com/ciuyity-lgtm) — 脑图数据自有版权，网站 [yi.ciuyishang.com](https://yi.ciuyishang.com)
 
 ## 许可证
 
