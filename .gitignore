@@ -1,0 +1,5 @@
+.DS_Store
+brainmap_data.json
+*.md
+!README.md
+*.command
