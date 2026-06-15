@@ -2,4 +2,5 @@
 brainmap_data.json
 *.md
 !README.md
+!CONTRIBUTING.md
 *.command
