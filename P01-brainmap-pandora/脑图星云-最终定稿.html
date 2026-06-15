@@ -632,7 +632,101 @@ window.addEventListener('keydown', function(e){
     searchInput.dispatchEvent(new Event('input'));
     document.getElementById('srch').classList.remove('on');
   }
+  // 自动演示
+  if (e.key === 'p' || e.key === 'P') {
+    if (window._autoDemoRunning) {
+      stopAutoDemo();
+    } else {
+      startAutoDemo();
+    }
+  }
 });
+
+// ==================== 自动演示模式 ====================
+var autoDemoTimer = null;
+var autoDemoStep = 0;
+var autoDemoStocks = [];
+var DEMO_DELAY = 6000; // 每个场景停留 6 秒
+var DEMO_TRANSITION = 2000; // 过渡动画 2 秒
+
+function startAutoDemo() {
+  if (galaxyMode) exitGalaxy();
+  
+  window._autoDemoRunning = true;
+  autoDemoStep = 0;
+  
+  // 收集有关联节点的股票（至少 3 条边）
+  var stockSet = new Set();
+  edges.forEach(function(e){
+    stockSet.add(e.source);
+    stockSet.add(e.target);
+  });
+  autoDemoStocks = Array.from(stockSet).filter(function(id){
+    var cnt = 0;
+    edges.forEach(function(e){ if (e.source===id || e.target===id) cnt++; });
+    return cnt >= 3;
+  });
+  
+  // 提示用户
+  var hint = document.createElement('div');
+  hint.id = 'demo-hint';
+  hint.style.cssText = 'position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.7);color:#fff;padding:12px 28px;border-radius:30px;font:14px sans-serif;z-index:9999;border:1px solid rgba(255,255,255,0.15);text-align:center;pointer-events:none;';
+  hint.innerHTML = '▶ 自动演示中 · P 暂停 · 共 ' + autoDemoStocks.length + ' 只股票';
+  document.body.appendChild(hint);
+  
+  // 开始演示
+  autoDemoTimer = setTimeout(runAutoDemoStep, 1500);
+}
+
+function runAutoDemoStep() {
+  if (!window._autoDemoRunning) return;
+  
+  if (autoDemoStep >= autoDemoStocks.length) {
+    // 演示结束，回到全景
+    if (galaxyMode) exitGalaxy();
+    autoDemoStep = 0;
+    // 继续循环
+    autoDemoTimer = setTimeout(runAutoDemoStep, DEMO_DELAY);
+    return;
+  }
+  
+  var stockId = autoDemoStocks[autoDemoStep];
+  var nd = null;
+  for (var i = 0; i < nodes.length; i++) { if (nodes[i].id === stockId) { nd = nodes[i]; break; } }
+  if (!nd) { autoDemoStep++; autoDemoTimer = setTimeout(runAutoDemoStep, 500); return; }
+  
+  // 更新提示
+  var hint = document.getElementById('demo-hint');
+  if (hint) {
+    hint.innerHTML = '▶ ' + nd.name + ' (' + stockId + ') · ' + (autoDemoStep+1) + '/' + autoDemoStocks.length + ' · P 暂停';
+  }
+  
+  // 进入星系
+  enterGalaxy(stockId);
+  
+  autoDemoStep++;
+  autoDemoTimer = setTimeout(function(){
+    if (galaxyMode) exitGalaxy();
+    // 等全景恢复后再进下一个
+    autoDemoTimer = setTimeout(runAutoDemoStep, DEMO_DELAY);
+  }, DEMO_DELAY + DEMO_TRANSITION);
+}
+
+function stopAutoDemo() {
+  window._autoDemoRunning = false;
+  clearTimeout(autoDemoTimer);
+  if (galaxyMode) exitGalaxy();
+  
+  var hint = document.getElementById('demo-hint');
+  if (hint) hint.remove();
+  
+  // 显示已停止提示
+  var msg = document.createElement('div');
+  msg.style.cssText = 'position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.7);color:#aaa;padding:10px 24px;border-radius:30px;font:13px sans-serif;z-index:9999;border:1px solid rgba(255,255,255,0.1);text-align:center;pointer-events:none;';
+  msg.textContent = '⏹ 演示已停止 · P 重新开始';
+  document.body.appendChild(msg);
+  setTimeout(function(){ if (msg.parentNode) msg.remove(); }, 3000);
+}
 
 window.addEventListener('resize', function(){
   camera.aspect = window.innerWidth / window.innerHeight;
