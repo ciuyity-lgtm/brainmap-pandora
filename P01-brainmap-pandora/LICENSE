@@ -1,21 +1,21 @@
-# License
+MIT License
 
-Copyright © ciuyi — All Rights Reserved.
+Copyright (c) 2026 ciuyi
 
-## 数据许可
-本项目包含的脑图数据（brainmap_data.json 及其衍生内容）：
-565 只 A 股产业链关系数据、行业分类、上下游关系图谱
-→ **All Rights Reserved** — 数据自有版权，未经书面授权不得复制、分发或用于商业用途。
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-## 代码许可
-本项目的源代码（HTML、JavaScript、CSS、配置文件）：
-→ **All Rights Reserved** — 代码以 GitHub 公开仓库形式发布供学习参考，但**不授予**以下权利：
-- 商业使用
-- 修改后分发
-- 在商业产品中嵌入
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-## 贡献者须知
-提交 Pull Request 即表示你同意：贡献内容的知识产权将归属于本项目作者（ciuyi），且贡献内容受本许可证约束。
-
-## 联系方式
-如需商业授权或合作，请通过 yi.ciuyishang.com 联系作者。
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
